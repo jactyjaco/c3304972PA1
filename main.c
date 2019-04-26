@@ -6,20 +6,34 @@ int rotationalEncrypt(char message[], int key);
 
 int main(){
     char message[1000];
-    int key = 1;
+    int key, select;
     printf("Please select a number from the menu below:\n-------------------------------------\n");
     printf("1) Rotational Encryption\n");
     printf("2) Rotational Decryption\n");
     printf("3) Substitutional Encryption\n");
     printf("4) Substitutional Decryption\n");
     printf("To exit press 0\n-------------------------------------\n");
-    fgets(message,1000,stdin);
+    scanf("%d", &select);
+    //printf("%d\n", select);
+    scanf("%s", message);
     printf("Your message: %s\n", message);
-    printf("Rotational Shift = %d\n-------------------------------------\n", key);
-    rotationalEncrypt(message, key);
+    scanf("%d", &key);
+    printf("Key = %d\n-------------------------------------\n", key);
+        switch(select){
+        case 1: printf("You have chosen to perform Rotational Encryption for message = '%s' using key '%d'\n", message, key);
+                rotationalEncrypt(message, key);
+                printf("-------------------------------------\n");
+                break;
+        case 2: printf("Choice is 2\n");
+                break;
+        case 0: printf("Goodbye...");
+                return 0;
+        default: printf("Good luck\n");
+                break;
     return 0;
+    }
 }
-
+  
 int rotationalEncrypt(char message[], int key){
         char ch;
         int cout;
@@ -30,7 +44,7 @@ int rotationalEncrypt(char message[], int key){
                 ch = ch + key;
                 
                 if (ch > 'z'){
-                    ch = ch - 'z' + 'a' - 1;
+                    ch = ch - 'z' + 'a' - key;
                 }
                 message[cout] = ch;
             }
@@ -38,7 +52,7 @@ int rotationalEncrypt(char message[], int key){
                 ch = ch + key;
             
                 if (ch > 'Z'){
-                ch = ch - 'Z' + 'A' - 1; 
+                ch = ch - 'Z' + 'A' - key; 
             }
 
                 message[cout] = ch;
