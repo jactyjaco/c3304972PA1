@@ -3,8 +3,8 @@
 #include <strings.h>
 
 int main(){
-    char message[] = "Attack", ch;
-    int key = -1, cout = 0;
+    char message[] = "attack", ch;
+    int key = 1, cout = 0;
     printf("Welcome to the C encryptor/decryptor\n-------------------------------------\n");
     printf("Message: %s\n", message);
     printf("Rotational Shift = %d\n", key);
@@ -20,13 +20,13 @@ int main(){
                 }
                 message[cout] = ch;
             }
-
             else if (ch >= 'A' && ch <= 'Z'){
                 ch = ch + key;
-                
+            
                 if (ch > 'Z'){
                 ch = ch - 'Z' + 'A' - 1; 
-                }
+            }
+
                 message[cout] = ch;
             }
     }
