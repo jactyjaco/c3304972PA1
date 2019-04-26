@@ -15,9 +15,9 @@ int main(){
     printf("To exit press 0\n-------------------------------------\n");
     scanf("%d", &select);
     //printf("%d\n", select);
-    scanf("%s", message);
-    printf("Your message: %s\n", message);
     scanf("%d", &key);
+    scanf("%s",message);
+    printf("The message is: %s\n", message);
     printf("Key = %d\n-------------------------------------\n", key);
         switch(select){
         case 1: printf("You have chosen to perform Rotational Encryption for message = '%s' using key '%d'\n", message, key);
@@ -63,8 +63,10 @@ int rotationalEncrypt(char message[], int key){
 }
 
 int rotationalDecrypt(char message[], int key){
-    	for(i = 0; message[i] != '\0'; ++i){
-		ch = message[i];
+        char ch;
+        int cout;
+    	for(cout = 0; message[cout] != '\0'; ++cout){
+		ch = message[cout];
 		
 		if(ch >= 'a' && ch <= 'z'){
 			ch = ch - key;
@@ -73,7 +75,7 @@ int rotationalDecrypt(char message[], int key){
 				ch = ch + 'z' - 'a' + 1;
 			}
 			
-			message[i] = ch;
+			message[cout] = ch;
 		}
 		else if(ch >= 'A' && ch <= 'Z'){
 			ch = ch - key;
@@ -82,12 +84,11 @@ int rotationalDecrypt(char message[], int key){
 				ch = ch + 'Z' - 'A' + 1;
 			}
 			
-			message[i] = ch;
+			message[cout] = ch;
 		}
 	}
 	
 	printf("Decrypted message: %s", message);
 	
 	return 0;
-}
 }
